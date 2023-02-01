@@ -77,3 +77,18 @@ export const parents = [
     ]
   }
 ]
+
+export const  navLinks = [
+  {
+    id: "home",
+    title: "Home",
+  },
+  {
+    id: "students",
+    title: "Students",
+  },
+  {
+    id: "profile",
+    title: "Profile"
+  }
+]

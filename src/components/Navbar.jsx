@@ -3,6 +3,8 @@ import { useState } from 'react'
 
 import { logo, menu, close } from '../assets'
 
+import { classNames } from '../util/class-names'
+
 import { navLinks } from '../constants'
 
 function Navbar() {
@@ -16,7 +18,10 @@ function Navbar() {
         {navLinks.map((nav, i) => (
           <li
             key={nav.id}
-            className={`font-normal text-[16px] cursor-pointer ${i === navLinks.length - 1 ? 'mr-0' : 'mr-10'}`}
+            className={classNames(
+              'font-normal text-[16px] cursor-pointer',
+              i === navLinks.length - 1 ? 'mr-0' : 'mr-10'
+            )}
           >
             <a href={`${nav.id}`}>{nav.title}</a>
           </li>
@@ -31,13 +36,19 @@ function Navbar() {
           className='w-[28px] h-[28px] object-contain'
         />
         <div
-          className={`${toggle ? 'flex' : 'hidden'} p-6 absolute bg-slate-400 top-20 right-0 mx-4 my-2 min-w-[140px] rounded-xl sidebar`}
+          className={classNames(
+            toggle ? 'flex' : 'hidden', 
+            'p-6 absolute bg-slate-400 top-20 right-0 mx-4 my-2 min-w-[140px] rounded-xl sidebar'
+          )}
         >
           <ul className='list-none flex flex-col justify-end items-center flex-1'>
             {navLinks.map((nav, i) => (
               <li
                 key={nav.id}
-                className={`font-normal text-[16px] cursor-pointer ${i === navLinks.length - 1 ? 'mb-0' : 'mb-4'}`}
+                className={classNames(
+                  'font-normal text-[16px] cursor-pointer',
+                  i === navLinks.length - 1 ? 'mb-0' : 'mb-4'
+                )}
               >
                 <a href={`${nav.id}`}>{nav.title}</a>
               </li>

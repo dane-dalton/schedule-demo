@@ -1,39 +1,43 @@
 export const parents = [
   {
-    parentId: "1",
+    parentId: 1,
     firstName: "Mary",
     lastName: "Wells",
     username: "mWells1",
     password: "123Mary",
     students: [
       {
-        studentId: "33",
+        studentId: 33,
         name: "Thomas Wells",
         schedule: [
           {
-            date: "1/28/23",
-            startEndTime: "1:30-2:30 CST",
+            sessionId: 1,
+            startDateTime: "2023-01-28T13:30",
+            endDateTime: "2023-01-28T14:30",
             sessionType: "class",
             level: "2",
             locationType: "virtual"
           },
           {
-            date: "2/4/23",
-            startEndTime: "1:30-2:30 CST",
+            sessionId: 2,
+            startDateTime: "2023-02-04T13:30",
+            endDateTime: "2023-02-04T14:30",
             sessionType: "class",
             level: "2",
             locationType: "virtual"
           },
           {
-            date: "2/11/23",
-            startEndTime: "1:30-2:30 CST",
+            sessionId: 3,
+            startDateTime: "2023-02-11T13:30",
+            endDateTime: "2023-02-11T14:30",
             sessionType: "class",
             level: "2",
             locationType: "virtual"
           },
           {
-            date: "2/14/23",
-            startEndTime: "5:30-6:30 CST",
+            sessionId: 4,
+            startDateTime: "2023-02-14T17:30",
+            endDateTime: "2023-02-14T18:30",
             sessionType: "contest external",
             level: "CML-4",
             locationType: "virtual"
@@ -41,33 +45,37 @@ export const parents = [
         ]
       },
       {
-        studentId: "56",
+        studentId: 56,
         name: "Meghan Wells",
         schedule: [
           {
-            date: "1/28/23",
-            startEndTime: "1:30-2:30 CST",
+            sessionId: 5,
+            startDateTime: "2023-01-28T13:30",
+            endDateTime: "2023-01-28T14:30",
             sessionType: "class",
             level: "4",
             locationType: "virtual"
           },
           {
-            date: "2/4/23",
-            startEndTime: "1:30-2:30 CST",
+            sessionId: 6,
+            startDateTime: "2023-02-04T13:30",
+            endDateTime: "2023-02-04T14:30",
             sessionType: "contest internal",
             level: "4",
             locationType: "virtual"
           },
           {
-            date: "2/11/23",
-            startEndTime: "1:30-2:30 CST",
+            sessionId: 7,
+            startDateTime: "2023-02-11T13:30",
+            endDateTime: "2023-02-11T14:30",
             sessionType: "class",
             level: "4",
             locationType: "virtual"
           },
           {
-            date: "2/16/23",
-            startEndTime: "4:20-5:20 CST",
+            sessionId: 8,
+            startDateTime: "2023-02-14T17:30",
+            endDateTime: "2023-02-14T18:30",
             sessionType: "contest external",
             level: "CML-5",
             locationType: "virtual"

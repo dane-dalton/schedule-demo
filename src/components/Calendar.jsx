@@ -2,9 +2,10 @@ import React from 'react'
 import { useState } from 'react'
 
 import { classNames } from '../util/class-names'
+import { parents } from '../constants/index'
+import Session from './Session'
 
 import { AiOutlineRight, AiOutlineLeft } from 'react-icons/ai'
-
 import {
   eachDayOfInterval,
   endOfMonth,
@@ -16,14 +17,19 @@ import {
   isEqual,
   isSameMonth,
   parse,
+  parseISO,
   add,
+  isSameDay,
 } from 'date-fns'
+
+const [{ students: [{ schedule }] }] = parents
 
 function Calendar() {
   let today = startOfToday()
   let [selectedDay, setSelectedDay] = useState(today)
   let [currentMonth, setCurrentMonth] = useState(format(today, 'MMM-yyyy'))
   let firstDayCurrentMonth = parse(currentMonth, 'MMM-yyyy', new Date())
+  let selectedDaySessions = schedule.filter(session => isSameDay(parseISO(session.startDateTime), selectedDay))
 
   let daysOfMonth = eachDayOfInterval({
     start: startOfWeek(firstDayCurrentMonth),
@@ -116,16 +122,31 @@ function Calendar() {
                       {format(day, 'd')}
                     </time>
                   </button>
+                  <div className='w-1 h-1 mx-auto mt-1'>
+                    {schedule.some(session => isSameDay(day, parseISO(session.startDateTime))
+                    ) && (
+                        <div className='w-1 h-1 rounded-full bg-sky-500'></div>
+                      )}
+                  </div>
                 </div>
               ))}
             </div>
           </div>
           <section className='mt-12 md:mt-0 md:pl-14'>
             <h2 className='font-semibold text-gray-900'>
-              Schedule for <time dateTime='2023-02-08'>Feb 8, 2023</time>
+              Schedule for <time dateTime={format(selectedDay, 'yyy-MM-dd')}>{format(selectedDay, 'MMM dd, yyyy')}</time>
             </h2>
             <ol>
-              {/* Map schedule here */}
+              {selectedDaySessions.length > 0 ? (
+                selectedDaySessions.map((session) => (
+                  <Session
+                    session={session}
+                    key={session.sessionId}
+                  />
+                ))
+              ) : (
+                <p>No sessions today.</p>
+              )}
             </ol>
           </section>
         </div>

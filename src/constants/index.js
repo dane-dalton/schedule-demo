@@ -74,8 +74,8 @@ export const parents = [
           },
           {
             sessionId: 8,
-            startDateTime: "2023-02-14T17:30",
-            endDateTime: "2023-02-14T18:30",
+            startDateTime: "2023-02-16T17:30",
+            endDateTime: "2023-02-16T18:30",
             sessionType: "contest external",
             level: "CML-5",
             locationType: "virtual"

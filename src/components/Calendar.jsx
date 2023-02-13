@@ -22,7 +22,14 @@ import {
   isSameDay,
 } from 'date-fns'
 
-const [{ students: [{ schedule }] }] = parents
+const [{ students: [...students] }] = parents
+console.log(students)
+const [{ schedule }] = students
+console.log(schedule)
+
+students.forEach((student) => {
+  console.log(student.schedule)
+})
 
 function Calendar() {
   let today = startOfToday()
@@ -123,7 +130,7 @@ function Calendar() {
                     </time>
                   </button>
                   <div className='w-1 h-1 mx-auto mt-1'>
-                    {schedule.some(session => isSameDay(day, parseISO(session.startDateTime))
+                    {students.some(student => student.schedule.some(session => isSameDay(day, parseISO(session.startDateTime)))
                     ) && (
                         <div className='w-1 h-1 rounded-full bg-sky-500'></div>
                       )}

@@ -5,6 +5,7 @@ import {
   parseISO,
 } from 'date-fns'
 
+// feed in student instead?
 function Session({ session }) {
   let startDateTime = parseISO(session.startDateTime)
   let endDateTime = parseISO(session.endDateTime)
@@ -14,6 +15,7 @@ function Session({ session }) {
     >
       {/* Potentially student photo here */}
       <div className='flex-auto'>
+        <p></p>
         <p className='text-gray-900'>
           <time dateTime={session.startDateTime}>
             {format(startDateTime, 'h:mm a')}

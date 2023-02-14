@@ -23,11 +23,6 @@ import {
 } from 'date-fns'
 
 const [{ students: [...students] }] = parents
-console.log(students)
-
-students.forEach((student) => {
-  console.log(student.schedule)
-})
 
 function Calendar() {
   let today = startOfToday()

@@ -24,8 +24,6 @@ import {
 
 const [{ students: [...students] }] = parents
 console.log(students)
-const [{ schedule }] = students
-console.log(schedule)
 
 students.forEach((student) => {
   console.log(student.schedule)
@@ -36,12 +34,25 @@ function Calendar() {
   let [selectedDay, setSelectedDay] = useState(today)
   let [currentMonth, setCurrentMonth] = useState(format(today, 'MMM-yyyy'))
   let firstDayCurrentMonth = parse(currentMonth, 'MMM-yyyy', new Date())
-  let selectedDaySessions = schedule.filter(session => isSameDay(parseISO(session.startDateTime), selectedDay))
 
   let daysOfMonth = eachDayOfInterval({
     start: startOfWeek(firstDayCurrentMonth),
     end: endOfWeek(endOfMonth(firstDayCurrentMonth))
   })
+
+  function filterSelectedDaySchedule(s) {
+    return s.schedule.filter(session => isSameDay(parseISO(session.startDateTime), selectedDay))
+  }
+
+  function checkEmptyDay() {
+    let boolCheck = false
+    students.forEach(student => {
+      if (filterSelectedDaySchedule(student).length > 0) {
+        boolCheck = true
+      }
+    })
+    return boolCheck
+  }
 
   function previousMonth() {
     let firstDayPreviousMonth = add(firstDayCurrentMonth, { months: -1 })
@@ -144,12 +155,15 @@ function Calendar() {
               Schedule for <time dateTime={format(selectedDay, 'yyy-MM-dd')}>{format(selectedDay, 'MMM dd, yyyy')}</time>
             </h2>
             <ol>
-              {selectedDaySessions.length > 0 ? (
-                selectedDaySessions.map((session) => (
-                  <Session
-                    session={session}
-                    key={session.sessionId}
-                  />
+              {checkEmptyDay() ? (
+                students.map(student => (
+                  filterSelectedDaySchedule(student).map(session => (
+                    <Session
+                      student={student}
+                      session={session}
+                      key={session.sessionId}
+                    />
+                  ))
                 ))
               ) : (
                 <p>No sessions today.</p>

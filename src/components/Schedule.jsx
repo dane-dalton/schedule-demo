@@ -1,12 +1,26 @@
 import React from 'react'
 import Calendar from './Calendar'
 import Upcoming from './Upcoming'
+import DropdownComponent from './DropdownComponent'
 import { useState } from 'react'
+
+import { parents } from '../constants'
 
 import { AiOutlineShrink, AiOutlineExpand } from 'react-icons/ai'
 
 function Schedule() {
+  const [{ students: [...students] }] = parents
+  const [visableStudents, setVisableStudents] = useState(students)
   const [toggleSchedule, setToggleSchedule] = useState(false)
+  
+  function handleAllStudents() {
+    setVisableStudents(students)
+  }
+
+  function handleStudentFilter(s) {
+    const filteredStudent = students.filter(student => student.name == s.name)
+    setVisableStudents(filteredStudent)
+  }
 
   return (
     <div className='pt-16'>
@@ -21,8 +35,9 @@ function Schedule() {
               {toggleSchedule ? (<AiOutlineShrink className='w-7 h-7' aria-hidden='true' />) : (<AiOutlineExpand className='w-7 h-7' aria-hidden='true' />)}
             </div>
           </button>
+          <DropdownComponent students={students} handleStudentFilter={handleStudentFilter} handleAllStudents={handleAllStudents} />
           <div className='mt-6'>
-            {toggleSchedule ? (<Calendar />) : (<Upcoming />)}
+            {toggleSchedule ? (<Calendar students={visableStudents} />) : (<Upcoming students={visableStudents} />)}
 
           </div>
         </div>

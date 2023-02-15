@@ -2,7 +2,6 @@ import React from 'react'
 import { useState } from 'react'
 
 import { classNames } from '../util/class-names'
-import { parents } from '../constants/index'
 import Session from './Session'
 
 import { AiOutlineRight, AiOutlineLeft } from 'react-icons/ai'
@@ -22,13 +21,11 @@ import {
   isSameDay,
 } from 'date-fns'
 
-const [{ students: [...students] }] = parents
-
-function Calendar() {
-  let today = startOfToday()
-  let [selectedDay, setSelectedDay] = useState(today)
-  let [currentMonth, setCurrentMonth] = useState(format(today, 'MMM-yyyy'))
-  let firstDayCurrentMonth = parse(currentMonth, 'MMM-yyyy', new Date())
+function Calendar({students}) {
+  const today = startOfToday()
+  const [selectedDay, setSelectedDay] = useState(today)
+  const [currentMonth, setCurrentMonth] = useState(format(today, 'MMM-yyyy'))
+  const firstDayCurrentMonth = parse(currentMonth, 'MMM-yyyy', new Date())
 
   let daysOfMonth = eachDayOfInterval({
     start: startOfWeek(firstDayCurrentMonth),
@@ -82,6 +79,9 @@ function Calendar() {
             <span className='sr-only'>Next month</span>
             <AiOutlineRight className='w-5 h-5' aria-hidden='true' />
           </button>
+        </div>
+        <div>
+
         </div>
         <div className='grid grid-cols-7 mt-8 text-xs leading-6 text-center text-gray-500'>
           <div>S</div>

@@ -18,6 +18,12 @@ function Session({ student, session }) {
         <p>{student.name}</p>
         <p className='text-gray-900'>
           <time dateTime={session.startDateTime}>
+            {format(startDateTime, 'MMM dd')}
+          </time>
+        </p>
+        <p>{session.level}</p>
+        <p className='text-gray-900'>
+          <time dateTime={session.startDateTime}>
             {format(startDateTime, 'h:mm a')}
           </time>
           {' CST - '}

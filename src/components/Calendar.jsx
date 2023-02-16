@@ -1,7 +1,7 @@
 import React from 'react'
 import { useState } from 'react'
 
-import { classNames } from '../util/class-names'
+import { classNames, sortStudentsSchedulesAsc } from '../util'
 import Session from './Session'
 
 import { AiOutlineRight, AiOutlineLeft } from 'react-icons/ai'
@@ -26,6 +26,9 @@ function Calendar({ students, toggleList }) {
   const [selectedDay, setSelectedDay] = useState(today)
   const [currentMonth, setCurrentMonth] = useState(format(today, 'MMM-yyyy'))
   const firstDayCurrentMonth = parse(currentMonth, 'MMM-yyyy', new Date())
+
+  let newStudentSchedule = sortStudentsSchedulesAsc(students)
+  console.log(newStudentSchedule)
 
   let daysOfMonth = eachDayOfInterval({
     start: startOfWeek(firstDayCurrentMonth),

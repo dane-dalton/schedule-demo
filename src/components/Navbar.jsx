@@ -3,7 +3,7 @@ import { useState } from 'react'
 
 import { logo, menu, close } from '../assets'
 
-import { classNames } from '../util/class-names'
+import { classNames } from '../util'
 
 import { navLinks } from '../constants'
 

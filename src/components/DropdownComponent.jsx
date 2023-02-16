@@ -40,7 +40,7 @@ export default function DropdownComponent({ students, handleStudentFilter, handl
         </button>
 
         {toggleDropdown && (
-        <div className="absolute right-0 z-10 w-56 mt-4 origin-top-right bg-white border border-gray-100 rounded-md shadow-lg">
+        <div className="absolute right-0 z-10 w-56 origin-top-right bg-white border border-gray-300 rounded-md shadow-lg">
           <div 
             onClick={() => setToggleDropdown(prev => !prev)}
             className="p-2"
@@ -63,7 +63,7 @@ export default function DropdownComponent({ students, handleStudentFilter, handl
                   handleStudentFilter(student);
                   handleNameClick(student.name)
                 }}
-                className="block px-4 py-2 text-sm text-gray-500 rounded-lg hover:bg-gray-50 hover:text-gray-700"
+                className="block px-4 py-2 text-sm border-t-gray-200 text-gray-500 rounded-lg hover:bg-gray-50 hover:text-gray-700"
               >
                 {student.name}
               </button>

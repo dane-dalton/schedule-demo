@@ -7,7 +7,14 @@ import { useState } from 'react'
 
 import { parents } from '../constants'
 
-import { AiOutlineShrink, AiOutlineExpand, AiOutlineBars, AiOutlineTable } from 'react-icons/ai'
+import { 
+  AiOutlineShrink, 
+  AiOutlineExpand, 
+  AiOutlineBars, 
+  AiOutlineCalendar,
+  AiOutlineHistory,
+  AiOutlineInteraction
+} from 'react-icons/ai'
 
 function Schedule() {
   const [{ students: [...students] }] = parents
@@ -45,7 +52,7 @@ function Schedule() {
               >
                 <span className='sr-only'>Toggle schedule</span>
                 {toggleSchedule && (
-                  toggleList ? <AiOutlineBars className='w-7 h-7' aria-hidden='true' /> : <AiOutlineTable className='w-7 h-7' aria-hidden='true' />
+                  toggleList ? <AiOutlineBars className='w-7 h-7' aria-hidden='true' /> : <AiOutlineCalendar className='w-7 h-7' aria-hidden='true' />
                 )}
               </button>
               <Modal />

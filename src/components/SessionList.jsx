@@ -10,7 +10,7 @@ function SessionList({ student, session }) {
   const endDateTime = parseISO(session.endDateTime)
   return (
     <li
-      className='flex items-center px-4 py-2 space-x-4 group rounded-xl focus-within:bg-gray-100 hover:bg-gray-100 border border-gray-500 text-sm'
+      className='flex items-center px-4 py-2 space-x-4 group rounded-md focus-within:bg-gray-100 hover:bg-gray-100 border border-gray-400 text-sm'
     >
       {/* Potentially student photo here */}
       <div className='flex-auto grid grid-cols-2 justify-items-center'>

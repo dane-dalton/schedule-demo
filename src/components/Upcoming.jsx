@@ -12,8 +12,7 @@ import {
 } from 'date-fns'
 
 function Upcoming({students}) {
-  let today = startOfToday()
-  let todayParsed = parse(format(today, 'MMM-yyyy'), 'MMM-yyyy', new Date())
+  const today = startOfToday()
 
   function filterUpcomingSchedule(s) {
     return s.schedule.filter(session => isWithinInterval(parseISO(session.startDateTime), {
@@ -40,7 +39,7 @@ function Upcoming({students}) {
             Upcoming Schedule
           </h2>
           <div className='flex-auto font-semibold text-gray-900'>
-            Today: {format(todayParsed, 'MMM do')}
+            Today: {format(today, 'MMM do')}
           </div>
         </div>
       </div>

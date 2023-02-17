@@ -2,7 +2,7 @@ import React from 'react'
 import Calendar from './Calendar'
 import Upcoming from './Upcoming'
 import DropdownComponent from './DropdownComponent'
-import ScheduleList from './ScheduleList'
+import Modal from './Modal'
 import { useState } from 'react'
 
 import { parents } from '../constants'
@@ -48,6 +48,7 @@ function Schedule() {
                   toggleList ? <AiOutlineBars className='w-7 h-7' aria-hidden='true' /> : <AiOutlineTable className='w-7 h-7' aria-hidden='true' />
                 )}
               </button>
+              <Modal />
             </div>
 
             <DropdownComponent students={students} handleStudentFilter={handleStudentFilter} handleAllStudents={handleAllStudents} />

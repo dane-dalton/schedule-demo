@@ -118,7 +118,73 @@ export const parents = [
   }
 ]
 
-export const  navLinks = [
+export const classesListAllLevels = {
+  level0: [
+
+  ],
+  level1: [
+    
+  ],
+  level2: [
+    {
+      sessionId: 206,
+      startDateTime: "2023-02-13T17:30",
+      endDateTime: "2023-02-13T18:30",
+      sessionType: "class",
+      level: "Level 2",
+      locationType: "virtual"
+    },
+    {
+      sessionId: 207,
+      startDateTime: "2023-02-14T17:30",
+      endDateTime: "2023-02-14T18:30",
+      sessionType: "class",
+      level: "Level 2",
+      locationType: "virtual"
+    },
+    {
+      sessionId: 208,
+      startDateTime: "2023-02-15T17:30",
+      endDateTime: "2023-02-15T18:30",
+      sessionType: "class",
+      level: "Level 2",
+      locationType: "virtual"
+    },
+    {
+      sessionId: 209,
+      startDateTime: "2023-02-18T13:30",
+      endDateTime: "2023-02-18T14:30",
+      sessionType: "class",
+      level: "Level 2",
+      locationType: "virtual"
+    },
+    {
+      sessionId: 210,
+      startDateTime: "2023-02-20T17:30",
+      endDateTime: "2023-02-20T18:30",
+      sessionType: "class",
+      level: "Level 2",
+      locationType: "virtual"
+    },
+  ],
+  level3: [
+
+  ],
+  level4: [
+
+  ],
+  level5: [
+
+  ],
+  cml4: [
+
+  ],
+  cml5: [
+
+  ],
+}
+
+export const navLinks = [
   {
     id: "home",
     title: "Home",

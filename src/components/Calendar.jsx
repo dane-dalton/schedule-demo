@@ -3,6 +3,7 @@ import { useState } from 'react'
 
 import { classNames } from '../util'
 import Session from './Session'
+import SessionList from './SessionList'
 
 import { AiOutlineRight, AiOutlineLeft } from 'react-icons/ai'
 import {
@@ -36,10 +37,24 @@ function Calendar({ students, toggleList }) {
     return s.schedule.filter(session => isSameDay(parseISO(session.startDateTime), selectedDay))
   }
 
+  function filterSelectedMonthSchedule(s) {
+    return s.schedule.filter(session => isSameMonth(parseISO(session.startDateTime), firstDayCurrentMonth))
+  }
+
   function checkEmptyDay() {
     let boolCheck = false
     students.forEach(student => {
       if (filterSelectedDaySchedule(student).length > 0) {
+        boolCheck = true
+      }
+    })
+    return boolCheck
+  }
+
+  function checkEmptyMonth() {
+    let boolCheck = false
+    students.forEach(student => {
+      if (filterSelectedMonthSchedule(student).length > 0) {
         boolCheck = true
       }
     })
@@ -59,7 +74,7 @@ function Calendar({ students, toggleList }) {
   return (
     <>
       {toggleList ? (
-        <div className='md:grid md:grid-cols-2 md:divide-x md:divide-gray-200'>
+        <div>
           <div className='md:pr-14'>
             <div className='flex items-center'>
               <h2 className='flex-auto font-semibold text-gray-900'>
@@ -186,9 +201,23 @@ function Calendar({ students, toggleList }) {
                 <AiOutlineRight className='w-5 h-5' aria-hidden='true' />
               </button>
           </div>
-          <ol>
-            {/* Concat student schedules, sort by date? */}
-          </ol>
+          <section className='mt-12 md:mt-0 md:pl-14'>
+            <ol>
+              {checkEmptyMonth() ? (
+                students.map(student => (
+                  filterSelectedMonthSchedule(student).map(session => (
+                    <SessionList
+                      student={student}
+                      session={session}
+                      key={session.sessionId}
+                    />
+                  ))
+                ))
+              ) : (
+                <p>No sessions this month.</p>
+              )}
+            </ol>
+          </section>
         </div>
       )}
     </>

@@ -9,6 +9,7 @@ export const parents = [
       {
         studentId: 33,
         name: "Thomas Wells",
+        level: 2,
         schedule: [
           {
             sessionId: 1,
@@ -16,6 +17,7 @@ export const parents = [
             endDateTime: "2023-01-28T14:30",
             sessionType: "class",
             level: "Level 2",
+            unit: "Nope 1",
             locationType: "virtual"
           },
           {
@@ -24,6 +26,7 @@ export const parents = [
             endDateTime: "2023-02-04T14:30",
             sessionType: "class",
             level: "Level 2",
+            unit: "Nope 2",
             locationType: "virtual"
           },
           {
@@ -32,6 +35,7 @@ export const parents = [
             endDateTime: "2023-02-11T14:30",
             sessionType: "class",
             level: "Level 2",
+            unit: "Nope 3",
             locationType: "virtual"
           },
           {
@@ -40,6 +44,7 @@ export const parents = [
             endDateTime: "2023-02-14T18:30",
             sessionType: "contest external",
             level: "CML-4",
+            unit: "Meet 2",
             locationType: "virtual"
           },
           {
@@ -48,6 +53,7 @@ export const parents = [
             endDateTime: "2023-02-18T14:30",
             sessionType: "class",
             level: "Level 2",
+            unit: "Nope",
             locationType: "virtual"
           },
           {
@@ -56,6 +62,7 @@ export const parents = [
             endDateTime: "2023-02-25T14:30",
             sessionType: "class",
             level: "Level 2",
+            unit: "Yup",
             locationType: "virtual"
           },
         ]
@@ -63,6 +70,7 @@ export const parents = [
       {
         studentId: 56,
         name: "Meghan Wells",
+        level: 4,
         schedule: [
           {
             sessionId: 5,
@@ -70,6 +78,7 @@ export const parents = [
             endDateTime: "2023-01-28T14:30",
             sessionType: "class",
             level: "Level 4",
+            unit: "Nope 1",
             locationType: "virtual"
           },
           {
@@ -78,6 +87,7 @@ export const parents = [
             endDateTime: "2023-02-04T14:30",
             sessionType: "contest internal",
             level: "Level 4",
+            unit: "Nope 2",
             locationType: "virtual"
           },
           {
@@ -86,6 +96,7 @@ export const parents = [
             endDateTime: "2023-02-11T14:30",
             sessionType: "class",
             level: "Level 4",
+            unit: "Nope 3",
             locationType: "virtual"
           },
           {
@@ -94,6 +105,7 @@ export const parents = [
             endDateTime: "2023-02-16T18:30",
             sessionType: "contest external",
             level: "CML-5",
+            unit: "Meet 2",
             locationType: "virtual"
           },
           {
@@ -102,6 +114,7 @@ export const parents = [
             endDateTime: "2023-02-18T14:30",
             sessionType: "class",
             level: "Level 4",
+            unit: "Nope",
             locationType: "virtual"
           },
           {
@@ -110,6 +123,7 @@ export const parents = [
             endDateTime: "2023-02-25T14:30",
             sessionType: "class",
             level: "Level 4",
+            unit: "Yup",
             locationType: "virtual"
           },
         ]
@@ -132,6 +146,7 @@ export const classesListAllLevels = {
       endDateTime: "2023-02-13T18:30",
       sessionType: "class",
       level: "Level 2",
+      unit: "Nope",
       locationType: "virtual"
     },
     {
@@ -140,6 +155,7 @@ export const classesListAllLevels = {
       endDateTime: "2023-02-14T18:30",
       sessionType: "class",
       level: "Level 2",
+      unit: "Nope",
       locationType: "virtual"
     },
     {
@@ -148,6 +164,7 @@ export const classesListAllLevels = {
       endDateTime: "2023-02-15T18:30",
       sessionType: "class",
       level: "Level 2",
+      unit: "Nope",
       locationType: "virtual"
     },
     {
@@ -156,6 +173,7 @@ export const classesListAllLevels = {
       endDateTime: "2023-02-18T14:30",
       sessionType: "class",
       level: "Level 2",
+      unit: "Nope",
       locationType: "virtual"
     },
     {
@@ -164,6 +182,52 @@ export const classesListAllLevels = {
       endDateTime: "2023-02-20T18:30",
       sessionType: "class",
       level: "Level 2",
+      unit: "Nope",
+      locationType: "virtual"
+    },
+    {
+      sessionId: 211,
+      startDateTime: "2023-02-21T17:30",
+      endDateTime: "2023-02-21T18:30",
+      sessionType: "class",
+      level: "Level 2",
+      unit: "Yup",
+      locationType: "virtual"
+    },
+    {
+      sessionId: 212,
+      startDateTime: "2023-02-22T17:30",
+      endDateTime: "2023-02-22T18:30",
+      sessionType: "class",
+      level: "Level 2",
+      unit: "Yup",
+      locationType: "virtual"
+    },
+    {
+      sessionId: 213,
+      startDateTime: "2023-02-23T17:30",
+      endDateTime: "2023-02-23T18:30",
+      sessionType: "class",
+      level: "Level 2",
+      unit: "Yup",
+      locationType: "virtual"
+    },
+    {
+      sessionId: 214,
+      startDateTime: "2023-02-25T13:30",
+      endDateTime: "2023-02-25T14:30",
+      sessionType: "class",
+      level: "Level 2",
+      unit: "Yup",
+      locationType: "virtual"
+    },
+    {
+      sessionId: 215,
+      startDateTime: "2023-02-26T17:30",
+      endDateTime: "2023-02-26T18:30",
+      sessionType: "class",
+      level: "Level 2",
+      unit: "Yup",
       locationType: "virtual"
     },
   ],

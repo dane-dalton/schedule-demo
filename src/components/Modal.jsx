@@ -1,15 +1,20 @@
 import React from "react";
+import StudentInfo from "./StudentInfo";
 
-export default function Modal() {
+import { classesListAllLevels } from "../constants";
+
+import { AiOutlineInteraction } from 'react-icons/ai'
+
+export default function Modal({ student, session }) {
   const [showModal, setShowModal] = React.useState(false);
   return (
     <>
       <button
-        className="bg-pink-500 text-white active:bg-pink-600 font-bold uppercase text-sm px-6 py-3 rounded shadow hover:shadow-lg outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150"
+        className="bg-pink-500 text-white active:bg-pink-600 font-bold uppercase px-1.5 py-1.5 rounded shadow hover:shadow-lg outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150"
         type="button"
         onClick={() => setShowModal(true)}
       >
-        Reschedule
+        <AiOutlineInteraction className="h-5 w-5" />
       </button>
       {showModal ? (
         <>
@@ -34,14 +39,19 @@ export default function Modal() {
                   </button>
                 </div>
                 {/*body*/}
-                <div className="relative p-6 flex-auto">
-                  <p className="my-4 text-slate-500 text-lg leading-relaxed">
-                    I always felt like I could do anything. That’s the main
-                    thing people are controlled by! Thoughts- their perception
-                    of themselves! They're slowed down by their perception of
-                    themselves. If you're taught you can’t do anything, you
-                    won’t do anything. I was taught I could do everything.
-                  </p>
+                <div className="relative px-6 py-3 flex-auto font-semibold">
+                  <p>Current Session</p>
+                </div>
+                <div className="relative px-6 py-3 mx-3 mb-3 flex-auto border border-black rounded-2xl">
+                  <StudentInfo student={student} session={session} />
+                </div>
+                <div className="relative px-6 py-3 flex-auto font-semibold">
+                  <p>Select A New Session</p>
+                </div>
+                <div>
+                  <ol>
+                    
+                  </ol>
                 </div>
                 {/*footer*/}
                 <div className="flex items-center justify-end p-6 border-t border-solid border-slate-200 rounded-b">
@@ -68,4 +78,12 @@ export default function Modal() {
       ) : null}
     </>
   );
+}
+
+function RescheduleList() {
+  return(
+    <div>
+
+    </div>
+  )
 }

@@ -2,7 +2,6 @@ import React from 'react'
 import Calendar from './Calendar'
 import Upcoming from './Upcoming'
 import DropdownComponent from './DropdownComponent'
-import Modal from './Modal'
 import { useState } from 'react'
 
 import { parents } from '../constants'
@@ -12,8 +11,6 @@ import {
   AiOutlineExpand, 
   AiOutlineBars, 
   AiOutlineCalendar,
-  AiOutlineHistory,
-  AiOutlineInteraction
 } from 'react-icons/ai'
 
 function Schedule() {
@@ -55,7 +52,6 @@ function Schedule() {
                   toggleList ? <AiOutlineBars className='w-7 h-7' aria-hidden='true' /> : <AiOutlineCalendar className='w-7 h-7' aria-hidden='true' />
                 )}
               </button>
-              <Modal />
             </div>
 
             <DropdownComponent students={students} handleStudentFilter={handleStudentFilter} handleAllStudents={handleAllStudents} />

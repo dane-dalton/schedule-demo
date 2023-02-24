@@ -1,5 +1,5 @@
 import React from 'react'
-import Modal from './Modal'
+import Modal from './RescheduleModal'
 import StudentInfo from './StudentInfo'
 
 function Session({ student, session }) {

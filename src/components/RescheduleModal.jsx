@@ -1,5 +1,6 @@
 import React from "react";
 import StudentInfo from "./StudentInfo";
+import RescheduleList from "./RescheduleList";
 
 import { classesListAllLevels } from "../constants";
 
@@ -7,6 +8,13 @@ import { AiOutlineInteraction } from 'react-icons/ai'
 
 export default function Modal({ student, session }) {
   const [showModal, setShowModal] = React.useState(false);
+  const studentLevel = `level${student.level}`
+  const classesSameLevel = classesListAllLevels[studentLevel]
+
+  function filterClassesSameUnit() {
+    return classesSameLevel.filter(c => c.unit == session.unit)
+  }
+
   return (
     <>
       <button
@@ -50,7 +58,11 @@ export default function Modal({ student, session }) {
                 </div>
                 <div>
                   <ol>
-                    
+                    {filterClassesSameUnit().map(c => (
+                      <RescheduleList 
+                        key={c.sessionId}
+                      />
+                    ))}
                   </ol>
                 </div>
                 {/*footer*/}
@@ -78,12 +90,4 @@ export default function Modal({ student, session }) {
       ) : null}
     </>
   );
-}
-
-function RescheduleList() {
-  return(
-    <div>
-
-    </div>
-  )
 }

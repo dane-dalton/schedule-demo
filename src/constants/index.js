@@ -133,13 +133,13 @@ export const parents = [
 ]
 
 export const classesListAllLevels = {
-  level0: [
+  "level0": [
 
   ],
-  level1: [
+  "level1": [
     
   ],
-  level2: [
+  "level2": [
     {
       sessionId: 206,
       startDateTime: "2023-02-13T17:30",
@@ -231,19 +231,13 @@ export const classesListAllLevels = {
       locationType: "virtual"
     },
   ],
-  level3: [
+  "level3": [
 
   ],
-  level4: [
+  "level4": [
 
   ],
-  level5: [
-
-  ],
-  cml4: [
-
-  ],
-  cml5: [
+  "level5": [
 
   ],
 }

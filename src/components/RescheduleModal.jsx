@@ -1,18 +1,29 @@
 import React from "react";
+import { useState } from "react";
 import StudentInfo from "./StudentInfo";
 import RescheduleList from "./RescheduleList";
 
 import { classesListAllLevels } from "../constants";
 
+import { classNames } from "../util";
+
 import { AiOutlineInteraction } from 'react-icons/ai'
 
+import {
+  parseISO,
+  isAfter,
+  isEqual,
+} from 'date-fns'
+
 export default function Modal({ student, session }) {
-  const [showModal, setShowModal] = React.useState(false);
+  const [showModal, setShowModal] = useState(false);
+  const rightNow = new Date()
   const studentLevel = `level${student.level}`
   const classesSameLevel = classesListAllLevels[studentLevel]
 
   function filterClassesSameUnit() {
-    return classesSameLevel.filter(c => c.unit == session.unit)
+    const sessionStartDateTime = parseISO(session.startDateTime)
+    return classesSameLevel.filter(c => (c.unit == session.unit) && (isAfter(parseISO(c.startDateTime), rightNow)) && (!isEqual(parseISO(c.startDateTime), sessionStartDateTime)))
   }
 
   return (
@@ -51,18 +62,30 @@ export default function Modal({ student, session }) {
                   <p>Current Session</p>
                 </div>
                 <div className="relative px-6 py-3 mx-3 mb-3 flex-auto border border-black rounded-2xl">
-                  <StudentInfo student={student} session={session} />
+                  <StudentInfo
+                    student={student}
+                    session={session}
+                  />
                 </div>
                 <div className="relative px-6 py-3 flex-auto font-semibold">
                   <p>Select A New Session</p>
                 </div>
                 <div>
                   <ol>
-                    {filterClassesSameUnit().map(c => (
-                      <RescheduleList 
-                        key={c.sessionId}
-                      />
-                    ))}
+                    {(filterClassesSameUnit().length > 0) ? (
+                      filterClassesSameUnit().map((c, cIdx) => (
+                        <div
+                          key={c.sessionId}
+                          className={classNames(
+                            cIdx > 0 && 'border-t border-black'
+                          )}
+                        >
+                          <RescheduleList session={c} />
+                        </div>
+                      ))
+                    ) : (
+                      <div className="px-4 pb-4">No sessions available for reschedule.</div>
+                    )}
                   </ol>
                 </div>
                 {/*footer*/}

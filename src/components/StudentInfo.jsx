@@ -20,13 +20,13 @@ function StudentInfo({ student, session }) {
         <div>
           <p className='text-gray-900'>
             <time dateTime={session.startDateTime}>
-              {format(startDateTime, 'h:mm a')}
+              {format(startDateTime, 'h:mma')}
             </time>
             {' CST - '}
           </p>
           <p className='text-gray-900'>
             <time dateTime={session.endDateTime}>
-              {format(endDateTime, 'h:mm a')}
+              {format(endDateTime, 'h:mma')}
             </time>
             {' CST'}
           </p>

@@ -74,14 +74,14 @@ export default function Modal({ student, session }) {
                   <ol>
                     {(filterClassesSameUnit().length > 0) ? (
                       filterClassesSameUnit().map((c, cIdx) => (
-                        <div
+                        <li
                           key={c.sessionId}
                           className={classNames(
                             cIdx > 0 && 'border-t border-black'
                           )}
                         >
                           <RescheduleList session={c} />
-                        </div>
+                        </li>
                       ))
                     ) : (
                       <div className="px-4 pb-4">No sessions available for reschedule.</div>

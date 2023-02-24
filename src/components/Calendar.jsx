@@ -3,7 +3,6 @@ import { useState } from 'react'
 
 import { classNames } from '../util'
 import Session from './Session'
-import SessionList from './SessionList'
 
 import { AiOutlineRight, AiOutlineLeft } from 'react-icons/ai'
 import {
@@ -75,6 +74,7 @@ function Calendar({ students, toggleList }) {
     <>
       {toggleList ? (
         <div>
+          {/* Calendar View */}
           <div className='md:pr-14'>
             <div className='flex items-center'>
               <h2 className='flex-auto font-semibold text-gray-900'>
@@ -180,37 +180,40 @@ function Calendar({ students, toggleList }) {
         </div>
       ) : (
         <div className='md:pr-14'>
+          {/* List View */}
           <div className='flex items-center'>
             <h2 className='flex-auto font-semibold text-gray-900'>
-            {format(firstDayCurrentMonth, 'MMMM yyyy')}
+              {format(firstDayCurrentMonth, 'MMMM yyyy')}
             </h2>
             <button
-                type='button'
-                onClick={previousMonth}
-                className='-my-1.5 flex flex-none items-center justify-center p-1.5 text-gray-400 hover:text-gray-500'
-              >
-                <span className='sr-only'>Previous month</span>
-                <AiOutlineLeft className='w-5 h-5' aria-hidden='true' />
-              </button>
-              <button
-                type='button'
-                onClick={nextMonth}
-                className='-my-1.5 flex flex-none items-center justify-center p-1.5 text-gray-400 hover:text-gray-500'
-              >
-                <span className='sr-only'>Next month</span>
-                <AiOutlineRight className='w-5 h-5' aria-hidden='true' />
-              </button>
+              type='button'
+              onClick={previousMonth}
+              className='-my-1.5 flex flex-none items-center justify-center p-1.5 text-gray-400 hover:text-gray-500'
+            >
+              <span className='sr-only'>Previous month</span>
+              <AiOutlineLeft className='w-5 h-5' aria-hidden='true' />
+            </button>
+            <button
+              type='button'
+              onClick={nextMonth}
+              className='-my-1.5 flex flex-none items-center justify-center p-1.5 text-gray-400 hover:text-gray-500'
+            >
+              <span className='sr-only'>Next month</span>
+              <AiOutlineRight className='w-5 h-5' aria-hidden='true' />
+            </button>
           </div>
           <section className='mt-4 md:mt-0 md:pl-14'>
             <ol>
               {checkEmptyMonth() ? (
                 students.map(student => (
                   filterSelectedMonthSchedule(student).map(session => (
-                    <SessionList
-                      student={student}
-                      session={session}
-                      key={session.sessionId}
-                    />
+                    <div key={session.sessionId} className='border border-gray-400 text-sm'>
+                      <Session
+                        student={student}
+                        session={session}
+                      />
+                    </div>
+
                   ))
                 ))
               ) : (

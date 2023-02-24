@@ -4,7 +4,6 @@ import Session from './Session'
 
 import {
   startOfToday,
-  parse,
   format,
   isWithinInterval,
   parseISO,

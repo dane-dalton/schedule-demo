@@ -1,15 +1,16 @@
 import React from 'react'
 import Calendar from './Calendar'
 import Upcoming from './Upcoming'
-import DropdownComponent from './DropdownComponent'
+import DropdownStudentFilter from './DropdownStudentFilter'
+import DropdownSessionType from './DropdownSessionType'
 import { useState } from 'react'
 
 import { parents } from '../constants'
 
-import { 
-  AiOutlineShrink, 
-  AiOutlineExpand, 
-  AiOutlineBars, 
+import {
+  AiOutlineShrink,
+  AiOutlineExpand,
+  AiOutlineBars,
   AiOutlineCalendar,
 } from 'react-icons/ai'
 
@@ -33,6 +34,9 @@ function Schedule() {
     <div className='pt-16'>
       <div className='max-w-md px-4 mx-auto sm:px-7 md:px-6'>
         <div>
+
+        </div>
+        <div>
           <div className='flex justify-between'>
             <div className='flex'>
               <button
@@ -54,19 +58,20 @@ function Schedule() {
                 )}
               </button>
             </div>
-
-            <DropdownComponent students={students} handleStudentFilter={handleStudentFilter} handleAllStudents={handleAllStudents} />
+            <div>
+              <DropdownSessionType />
+              <DropdownStudentFilter students={students} handleStudentFilter={handleStudentFilter} handleAllStudents={handleAllStudents} />
+            </div>
           </div>
-
           <div className='mt-6'>
             {toggleScheduleView ? (
-              <Calendar 
-                students={visableStudents} 
+              <Calendar
+                students={visableStudents}
                 toggleList={toggleList}
               />
-              ) : (
-                <Upcoming students={visableStudents} />
-              )}
+            ) : (
+              <Upcoming students={visableStudents} />
+            )}
           </div>
         </div>
       </div>

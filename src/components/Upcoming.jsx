@@ -54,7 +54,7 @@ function Upcoming({students}) {
             ))
           ))
         ) : (
-          <div>False</div>
+          <div className='mt-5'>No upcoming events.</div>
         )}
       </ol>
     </div>

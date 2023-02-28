@@ -1,7 +1,7 @@
 import React from "react";
 import { useState } from 'react'
 
-export default function DropdownComponent({ students, handleStudentFilter, handleAllStudents }) {
+export default function DropdownStudentFilter({ students, handleStudentFilter, handleAllStudents }) {
   const [toggleDropdown, setToggleDropdown] = useState(false)
   const [dropdownName, setDropdownName] = useState('All Students')
   
@@ -16,7 +16,6 @@ export default function DropdownComponent({ students, handleStudentFilter, handl
       >
         {dropdownName}
       </div>
-
       <div className="relative">
         <button
           type="button"

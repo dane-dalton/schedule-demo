@@ -10,8 +10,12 @@ function App() {
           <Navbar />
         </div>
       </div>
-
-      <div className={`${styles.flexCenter}`}>
+      <div className={`${styles.paddingX} ${styles.flexCenter}`}>
+        <div className={`${styles.boxWidth}`}>
+          {/* Students? Likely important updates. */}
+        </div>
+      </div>
+      <div className={` ${styles.flexCenter}`}>
         <div className={`${styles.boxWidth}`}>
           <Schedule />
         </div>

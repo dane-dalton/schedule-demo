@@ -202,7 +202,7 @@ function Calendar({ students, toggleList }) {
               <AiOutlineRight className='w-5 h-5' aria-hidden='true' />
             </button>
           </div>
-          <section className='mt-4 md:mt-0 md:pl-14'>
+          <section className='mt-4 md:pl-14'>
             <ol>
               {checkEmptyMonth() ? (
                 students.map(student => (
@@ -213,7 +213,6 @@ function Calendar({ students, toggleList }) {
                         session={session}
                       />
                     </div>
-
                   ))
                 ))
               ) : (

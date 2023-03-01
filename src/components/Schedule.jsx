@@ -16,26 +16,36 @@ import {
 
 function Schedule() {
   const [{ students: [...students] }] = parents
-  const [currentSchedule, setCurrentSchedule] = useState()
   const [visableStudents, setVisableStudents] = useState(students)
+  const [sessionTypeFilter, setSessionTypeFilter] = useState(visableStudents)
   const [toggleScheduleView, setToggleScheduleView] = useState(false)
   const [toggleList, setToggleList] = useState(false)
+
+  const arrayOfSessionTypes = students.reduce(())
 
   function handleAllStudents() {
     setVisableStudents(students)
   }
 
   function handleStudentFilter(s) {
-    const filteredStudent = students.filter(student => student.name == s.name)
+    const filteredStudent = students.filter(student => student.name == s)
     setVisableStudents(filteredStudent)
+  }
+
+  function handleAllSessions() {
+    setSessionTypeFilter(visableStudents)
+  }
+
+  function handleSessionFilter(s) {
+    const filteredSessions = visableStudents.forEach(student => {
+      student.schedule.filter(session => session.sessionType == s)
+    })
+    setSessionTypeFilter(filteredSessions)
   }
 
   return (
     <div className='pt-16'>
       <div className='max-w-md px-4 mx-auto sm:px-7 md:px-6'>
-        <div>
-
-        </div>
         <div>
           <div className='flex justify-between'>
             <div className='flex'>
@@ -58,8 +68,8 @@ function Schedule() {
                 )}
               </button>
             </div>
-            <div>
-              <DropdownSessionType />
+            <div className='flex'>
+              <DropdownSessionType students={students} />
               <DropdownStudentFilter students={students} handleStudentFilter={handleStudentFilter} handleAllStudents={handleAllStudents} />
             </div>
           </div>
@@ -75,9 +85,7 @@ function Schedule() {
           </div>
         </div>
       </div>
-
     </div>
-
   )
 }
 

@@ -1,10 +1,10 @@
 import React from 'react'
 import { useState } from 'react'
 
-function DropdownSessionType() {
+function DropdownSessionType({ students, }) {
   const [toggleDropdown, setToggleDropdown] = useState(false)
-  const [dropdownName, setDropdownName] = useState('All Students')
-  
+  const [dropdownName, setDropdownName] = useState('All Sessions')
+
   function handleNameClick(n) {
     setDropdownName(n)
   }
@@ -19,7 +19,7 @@ function DropdownSessionType() {
       <div className="relative">
         <button
           type="button"
-          onClick={() => {setToggleDropdown(prev => !prev)}}
+          onClick={() => { setToggleDropdown(prev => !prev) }}
           className="inline-flex items-center justify-center h-full px-2 text-gray-600 border-l border-gray-100 hover:text-gray-700 rounded-r-md hover:bg-gray-50"
         >
           <svg
@@ -39,36 +39,43 @@ function DropdownSessionType() {
         </button>
 
         {toggleDropdown && (
-        <div className="absolute right-0 z-10 w-56 origin-top-right bg-white border border-gray-300 rounded-md shadow-lg">
-          <div 
-            onClick={() => setToggleDropdown(prev => !prev)}
-            className="p-2"
-          >
-            <button
-              type='button'
-              onClick={() => {
-                handleAllStudents();
-                handleNameClick('All Students')
-              }}
-              className="block px-4 py-2 text-sm text-gray-500 rounded-lg hover:bg-gray-50 hover:text-gray-700"
+          <div className="absolute right-0 z-10 w-56 origin-top-right bg-white border border-gray-300 rounded-md shadow-lg">
+            <div
+              onClick={() => setToggleDropdown(prev => !prev)}
+              className="p-2"
             >
-              All Students
-            </button>
-            {students.map(student => (
+              <button
+                type='button'
+                onClick={() => {
+                  handleAllStudents();
+                  handleNameClick('All Students')
+                }}
+                className="block px-4 py-2 text-sm text-gray-500 rounded-lg hover:bg-gray-50 hover:text-gray-700"
+              >
+                All Sessions
+              </button>
               <button
                 type="button"
-                key={student.studentId}
                 onClick={() => {
                   handleStudentFilter(student);
                   handleNameClick(student.name)
                 }}
                 className="block px-4 py-2 text-sm border-t-gray-200 text-gray-500 rounded-lg hover:bg-gray-50 hover:text-gray-700"
               >
-                {student.name}
+                Class
               </button>
-            ))}
+              <button
+                type="button"
+                onClick={() => {
+                  handleStudentFilter(student);
+                  handleNameClick(student.name)
+                }}
+                className="block px-4 py-2 text-sm border-t-gray-200 text-gray-500 rounded-lg hover:bg-gray-50 hover:text-gray-700"
+              >
+                Competition
+              </button>
+            </div>
           </div>
-        </div>
         )}
       </div>
     </div>

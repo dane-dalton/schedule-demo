@@ -59,7 +59,7 @@ export default function DropdownStudentFilter({ students, handleStudentFilter, h
                 type="button"
                 key={student.studentId}
                 onClick={() => {
-                  handleStudentFilter(student);
+                  handleStudentFilter(student.name);
                   handleNameClick(student.name)
                 }}
                 className="block px-4 py-2 text-sm border-t-gray-200 text-gray-500 rounded-lg hover:bg-gray-50 hover:text-gray-700"

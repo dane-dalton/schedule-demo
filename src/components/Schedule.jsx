@@ -17,11 +17,9 @@ import {
 function Schedule() {
   const [{ students: [...students] }] = parents
   const [visableStudents, setVisableStudents] = useState(students)
-  const [sessionTypeFilter, setSessionTypeFilter] = useState(visableStudents)
+  const [sessionFilter, setSessionFilter] = useState("All Sessions")
   const [toggleScheduleView, setToggleScheduleView] = useState(false)
   const [toggleList, setToggleList] = useState(false)
-
-  const arrayOfSessionTypes = students.reduce(())
 
   function handleAllStudents() {
     setVisableStudents(students)
@@ -30,17 +28,25 @@ function Schedule() {
   function handleStudentFilter(s) {
     const filteredStudent = students.filter(student => student.name == s)
     setVisableStudents(filteredStudent)
+    handleSessionFilter(sessionFilter)
   }
 
   function handleAllSessions() {
-    setSessionTypeFilter(visableStudents)
+    setVisableStudents(visableStudents)
+  }
+
+  function handleSessionType(s) {
+    setSessionFilter(s)
+    handleSessionFilter(sessionFilter)
   }
 
   function handleSessionFilter(s) {
-    const filteredSessions = visableStudents.forEach(student => {
-      student.schedule.filter(session => session.sessionType == s)
+    let filteredScheduleStudents = JSON.parse(JSON.stringify(visableStudents))
+    filteredScheduleStudents.forEach(student => {
+      student.schedule = student.schedule.filter(session => session.sessionType == s)
+      console.log(student.schedule)
     })
-    setSessionTypeFilter(filteredSessions)
+    setVisableStudents(filteredScheduleStudents)
   }
 
   return (
@@ -69,7 +75,7 @@ function Schedule() {
               </button>
             </div>
             <div className='flex'>
-              <DropdownSessionType students={students} />
+              <DropdownSessionType students={students} handleSessionType={handleSessionType} handleAllSessions={handleAllSessions} />
               <DropdownStudentFilter students={students} handleStudentFilter={handleStudentFilter} handleAllStudents={handleAllStudents} />
             </div>
           </div>

@@ -256,3 +256,10 @@ export const navLinks = [
     title: "Profile"
   }
 ]
+
+export const sessionTypes = [
+  "Class",
+  "Contest Internal",
+  "Contest External",
+  "Tryout",
+]

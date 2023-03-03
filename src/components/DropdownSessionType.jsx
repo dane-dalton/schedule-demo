@@ -1,7 +1,9 @@
 import React from 'react'
 import { useState } from 'react'
 
-function DropdownSessionType({ students, }) {
+import { sessionTypes } from '../constants'
+
+function DropdownSessionType({ students, handleSessionType, handleAllSessions }) {
   const [toggleDropdown, setToggleDropdown] = useState(false)
   const [dropdownName, setDropdownName] = useState('All Sessions')
 
@@ -47,8 +49,8 @@ function DropdownSessionType({ students, }) {
               <button
                 type='button'
                 onClick={() => {
-                  handleAllStudents();
-                  handleNameClick('All Students')
+                  handleAllSessions();
+                  handleNameClick('All Sessions')
                 }}
                 className="block px-4 py-2 text-sm text-gray-500 rounded-lg hover:bg-gray-50 hover:text-gray-700"
               >
@@ -57,8 +59,8 @@ function DropdownSessionType({ students, }) {
               <button
                 type="button"
                 onClick={() => {
-                  handleStudentFilter(student);
-                  handleNameClick(student.name)
+                  handleSessionType("class");
+                  handleNameClick("Class")
                 }}
                 className="block px-4 py-2 text-sm border-t-gray-200 text-gray-500 rounded-lg hover:bg-gray-50 hover:text-gray-700"
               >

@@ -1,9 +1,11 @@
 import React from 'react'
+import { useState } from 'react'
 import Calendar from './Calendar'
 import Upcoming from './Upcoming'
 import DropdownStudentFilter from './DropdownStudentFilter'
 import DropdownSessionType from './DropdownSessionType'
-import { useState } from 'react'
+import StudentListAndFilter from './StudentListAndFilter'
+
 
 import { parents } from '../constants'
 
@@ -42,6 +44,13 @@ function Schedule() {
     <div className='pt-16'>
       <div className='max-w-md px-4 mx-auto sm:px-7 md:px-6 min-h-[384px]'>
         <div>
+          <ol>
+            {students.map(student => (
+              <li key={student.studentId}>
+                <StudentListAndFilter student={student} />
+              </li>
+            ))}
+          </ol>
           <div className='flex justify-between'>
             <div className='flex'>
               <button

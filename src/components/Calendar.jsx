@@ -21,7 +21,7 @@ import {
   isSameDay,
 } from 'date-fns'
 
-function Calendar({ students, toggleList }) {
+function Calendar({ students, toggleList, sessionFilterLogic }) {
   const today = startOfToday()
   const [selectedDay, setSelectedDay] = useState(today)
   const [currentMonth, setCurrentMonth] = useState(format(today, 'MMM-yyyy'))
@@ -33,11 +33,11 @@ function Calendar({ students, toggleList }) {
   })
 
   function filterSelectedDaySchedule(s) {
-    return s.schedule.filter(session => isSameDay(parseISO(session.startDateTime), selectedDay))
+    return s.schedule.filter(session => (isSameDay(parseISO(session.startDateTime), selectedDay) && sessionFilterLogic(session)))
   }
 
   function filterSelectedMonthSchedule(s) {
-    return s.schedule.filter(session => isSameMonth(parseISO(session.startDateTime), firstDayCurrentMonth))
+    return s.schedule.filter(session => (isSameMonth(parseISO(session.startDateTime), firstDayCurrentMonth) && sessionFilterLogic(session)))
   }
 
   function checkEmptyDay() {
@@ -148,7 +148,7 @@ function Calendar({ students, toggleList }) {
                     </time>
                   </button>
                   <div className='w-1 h-1 mx-auto mt-1'>
-                    {students.some(student => student.schedule.some(session => isSameDay(day, parseISO(session.startDateTime)))
+                    {students.some(student => student.schedule.some(session => (isSameDay(day, parseISO(session.startDateTime)) && sessionFilterLogic(session)))
                     ) && (
                         <div className='w-1 h-1 rounded-full bg-sky-500'></div>
                       )}
@@ -173,7 +173,7 @@ function Calendar({ students, toggleList }) {
                   ))
                 ))
               ) : (
-                <p>No sessions today.</p>
+                <p className='mb-8'>No sessions today.</p>
               )}
             </ol>
           </section>
@@ -216,7 +216,7 @@ function Calendar({ students, toggleList }) {
                   ))
                 ))
               ) : (
-                <p>No sessions this month.</p>
+                <p className='mb-8'>No sessions this month.</p>
               )}
             </ol>
           </section>

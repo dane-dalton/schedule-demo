@@ -3,7 +3,7 @@ import { useState } from 'react'
 
 import { sessionTypes } from '../constants'
 
-function DropdownSessionType({ students, handleSessionType, handleAllSessions }) {
+function DropdownSessionType({ handleSessionFilter }) {
   const [toggleDropdown, setToggleDropdown] = useState(false)
   const [dropdownName, setDropdownName] = useState('All Sessions')
 
@@ -18,7 +18,7 @@ function DropdownSessionType({ students, handleSessionType, handleAllSessions })
       >
         {dropdownName}
       </div>
-      <div className="relative">
+      <div className='relative'>
         <button
           type="button"
           onClick={() => { setToggleDropdown(prev => !prev) }}
@@ -49,33 +49,26 @@ function DropdownSessionType({ students, handleSessionType, handleAllSessions })
               <button
                 type='button'
                 onClick={() => {
-                  handleAllSessions();
+                  handleSessionFilter('All Sessions');
                   handleNameClick('All Sessions')
-                }}
+                  }}
                 className="block px-4 py-2 text-sm text-gray-500 rounded-lg hover:bg-gray-50 hover:text-gray-700"
               >
                 All Sessions
               </button>
-              <button
-                type="button"
-                onClick={() => {
-                  handleSessionType("class");
-                  handleNameClick("Class")
-                }}
-                className="block px-4 py-2 text-sm border-t-gray-200 text-gray-500 rounded-lg hover:bg-gray-50 hover:text-gray-700"
-              >
-                Class
-              </button>
-              <button
-                type="button"
-                onClick={() => {
-                  handleStudentFilter(student);
-                  handleNameClick(student.name)
-                }}
-                className="block px-4 py-2 text-sm border-t-gray-200 text-gray-500 rounded-lg hover:bg-gray-50 hover:text-gray-700"
-              >
-                Competition
-              </button>
+              {sessionTypes.map((session, sessionIdx) => (
+                <button
+                  type="button"
+                  key={sessionIdx}
+                  onClick={() => {
+                    handleSessionFilter(session.toLowerCase());
+                    handleNameClick(session)
+                  }}
+                  className="block px-4 py-2 text-sm border-t-gray-200 text-gray-500 rounded-lg hover:bg-gray-50 hover:text-gray-700"
+                >
+                  {session}
+                </button>
+              ))}
             </div>
           </div>
         )}

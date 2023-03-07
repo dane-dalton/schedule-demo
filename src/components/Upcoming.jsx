@@ -10,14 +10,14 @@ import {
   add,
 } from 'date-fns'
 
-function Upcoming({students}) {
+function Upcoming({students, sessionFilterLogic }) {
   const today = startOfToday()
 
   function filterUpcomingSchedule(s) {
-    return s.schedule.filter(session => isWithinInterval(parseISO(session.startDateTime), {
+    return s.schedule.filter(session => (isWithinInterval(parseISO(session.startDateTime), {
       start: today,
       end: add(today, { days: 7 })
-    }))
+    }) && sessionFilterLogic(session)))
   }
 
   function checkEmpyUpcoming() {

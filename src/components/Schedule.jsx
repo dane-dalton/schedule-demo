@@ -28,30 +28,19 @@ function Schedule() {
   function handleStudentFilter(s) {
     const filteredStudent = students.filter(student => student.name == s)
     setVisableStudents(filteredStudent)
-    handleSessionFilter(sessionFilter)
   }
 
-  function handleAllSessions() {
-    setVisableStudents(visableStudents)
+  function handleSessionFilter(sType) {
+    setSessionFilter(sType)
   }
 
-  function handleSessionType(s) {
-    setSessionFilter(s)
-    handleSessionFilter(sessionFilter)
-  }
-
-  function handleSessionFilter(s) {
-    let filteredScheduleStudents = JSON.parse(JSON.stringify(visableStudents))
-    filteredScheduleStudents.forEach(student => {
-      student.schedule = student.schedule.filter(session => session.sessionType == s)
-      console.log(student.schedule)
-    })
-    setVisableStudents(filteredScheduleStudents)
+  function sessionFilterLogic(session) {
+    return (session.sessionType == sessionFilter || sessionFilter == "All Sessions")
   }
 
   return (
     <div className='pt-16'>
-      <div className='max-w-md px-4 mx-auto sm:px-7 md:px-6'>
+      <div className='max-w-md px-4 mx-auto sm:px-7 md:px-6 min-h-[384px]'>
         <div>
           <div className='flex justify-between'>
             <div className='flex'>
@@ -75,7 +64,7 @@ function Schedule() {
               </button>
             </div>
             <div className='flex'>
-              <DropdownSessionType students={students} handleSessionType={handleSessionType} handleAllSessions={handleAllSessions} />
+              <DropdownSessionType handleSessionFilter={handleSessionFilter} />
               <DropdownStudentFilter students={students} handleStudentFilter={handleStudentFilter} handleAllStudents={handleAllStudents} />
             </div>
           </div>
@@ -84,9 +73,13 @@ function Schedule() {
               <Calendar
                 students={visableStudents}
                 toggleList={toggleList}
+                sessionFilterLogic={sessionFilterLogic}
               />
             ) : (
-              <Upcoming students={visableStudents} />
+              <Upcoming
+                students={visableStudents}
+                sessionFilterLogic={sessionFilterLogic}
+              />
             )}
           </div>
         </div>

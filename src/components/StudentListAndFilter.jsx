@@ -1,6 +1,8 @@
 import React from 'react'
 import { useState } from 'react'
 
+import { classNames } from '../util'
+
 import {
   AiOutlineBorder,
   AiOutlineCheckSquare,
@@ -14,7 +16,9 @@ function StudentListAndFilter({ student, handleSelectedStudents }) {
   }
 
   return (
-    <li>
+    <li className={classNames(
+      toggleCheckBox ? 'text-gray-900' : 'text-gray-400'
+    )}>
       <button
         className='flex-auto w-full flex justify-between items-center mb-4'
         onClick={() => {
@@ -25,12 +29,12 @@ function StudentListAndFilter({ student, handleSelectedStudents }) {
       >
         {
           toggleCheckBox ?
-            <AiOutlineCheckSquare className='h-6 w-6 text-gray-900' /> :
-            <AiOutlineBorder className='h-6 w-6 text-gray-900' />
+            <AiOutlineCheckSquare className='h-6 w-6' /> :
+            <AiOutlineBorder className='h-6 w-6' />
         }
-        <p className='text-gray-900 font-semibold'>{student.name}</p>
+        <p className='font-semibold'>{student.name}</p>
         <section className='flex'>
-          <p className='text-gray-900 font-semibold'>Level: {student.level}</p>
+          <p className='font-semibold'>Level: {student.level}</p>
         </section>
         <p></p>
       </button>

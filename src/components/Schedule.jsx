@@ -48,7 +48,7 @@ function Schedule() {
 
   return (
     <div className='pt-16'>
-      <div className='max-w-md py-4 px-4 mx-auto sm:px-7 md:px-6 min-h-[384px] border-2 border-gray-900 rounded-xl drop-shadow-lg'>
+      <div className='max-w-md my-4 py-4 px-4 mx-auto sm:px-7 md:px-6 min-h-[384px] border border-gray-900 rounded-xl shadow-xl drop-shadow-xl'>
         <div>
           <ol className='mb-6'>
             {students.map(student => (

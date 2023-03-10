@@ -23,13 +23,19 @@ function Schedule() {
   const [toggleScheduleView, setToggleScheduleView] = useState(false)
   const [toggleList, setToggleList] = useState(false)
 
-  function handleAllStudents() {
-    setVisableStudents(students)
-  }
+  // function handleAllStudents() {
+  //   setVisableStudents(students)
+  // }
 
-  function handleStudentFilter(s) {
-    const filteredStudent = students.filter(student => student.name == s)
-    setVisableStudents(filteredStudent)
+  // function handleStudentFilter(s) {
+  //   const filteredStudent = students.filter(student => student.name == s)
+  //   setVisableStudents(filteredStudent)
+  // }
+
+  function handleSelectedStudents(isChecked, student) {
+    let newStudentDisplay = visableStudents.slice()
+    !isChecked ? newStudentDisplay.push(student) : (newStudentDisplay = newStudentDisplay.filter(s => s !== student))
+    setVisableStudents(newStudentDisplay)
   }
 
   function handleSessionFilter(sType) {
@@ -42,13 +48,15 @@ function Schedule() {
 
   return (
     <div className='pt-16'>
-      <div className='max-w-md px-4 mx-auto sm:px-7 md:px-6 min-h-[384px]'>
+      <div className='max-w-md py-4 px-4 mx-auto sm:px-7 md:px-6 min-h-[384px] border-2 border-gray-900 rounded-xl drop-shadow-lg'>
         <div>
-          <ol>
+          <ol className='mb-6'>
             {students.map(student => (
-              <li key={student.studentId}>
-                <StudentListAndFilter student={student} />
-              </li>
+              <StudentListAndFilter
+                key={student.studentId}
+                student={student}
+                handleSelectedStudents={handleSelectedStudents}
+              />
             ))}
           </ol>
           <div className='flex justify-between'>
@@ -74,7 +82,6 @@ function Schedule() {
             </div>
             <div className='flex'>
               <DropdownSessionType handleSessionFilter={handleSessionFilter} />
-              <DropdownStudentFilter students={students} handleStudentFilter={handleStudentFilter} handleAllStudents={handleAllStudents} />
             </div>
           </div>
           <div className='mt-6'>

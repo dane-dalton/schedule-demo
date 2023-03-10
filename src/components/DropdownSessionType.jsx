@@ -45,7 +45,6 @@ function DropdownSessionType({ handleSessionFilter }) {
         {toggleDropdown && (
           <div className="absolute right-0 z-10 w-56 origin-top-right bg-white border border-gray-300 rounded-md shadow-lg">
             <div
-              onClick={() => setToggleDropdown(prev => !prev)}
               className="p-2"
             >
               <button

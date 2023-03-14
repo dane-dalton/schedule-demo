@@ -7,6 +7,7 @@ import {
   AiOutlineBorder,
   AiOutlineCheckSquare,
 } from 'react-icons/ai'
+import { Tooltip, Box } from '@mui/material'
 
 function StudentListAndFilter({ student, handleSelectedStudents }) {
   const [toggleCheckBox, setToggleCheckBox] = useState(true)
@@ -20,23 +21,28 @@ function StudentListAndFilter({ student, handleSelectedStudents }) {
       toggleCheckBox ? 'text-gray-900' : 'text-gray-400'
     )}>
       <button
-        className='flex-auto w-full flex justify-between items-center mb-4'
+        className='flex-auto w-full flex flex-col justify-center mb-6'
         onClick={() => {
           handleCheckBoxToggle();
           handleSelectedStudents(toggleCheckBox, student);
         }
         }
       >
-        {
-          toggleCheckBox ?
-            <AiOutlineCheckSquare className='h-6 w-6' /> :
-            <AiOutlineBorder className='h-6 w-6' />
-        }
-        <p className='font-semibold'>{student.name}</p>
-        <section className='flex'>
+        <section className='flex justify-around items-center w-full mb-2'>
+          {
+            toggleCheckBox ?
+              <Tooltip title="Hide Student">
+                <Box>
+                  <AiOutlineCheckSquare className='h-6 w-6' />
+                </Box>
+              </Tooltip>
+              :
+              <AiOutlineBorder className='h-6 w-6' />
+          }
+          <p className='font-semibold'>{student.name}</p>
           <p className='font-semibold'>Level: {student.level}</p>
         </section>
-        <p></p>
+        <p className='font-semibold mx-auto'>Teacher: {student.teacher}</p>
       </button>
     </li>
   )

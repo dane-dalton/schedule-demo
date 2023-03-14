@@ -15,6 +15,7 @@ import {
   AiOutlineBars,
   AiOutlineCalendar,
 } from 'react-icons/ai'
+import { Tooltip, Box } from '@mui/material'
 
 function Schedule() {
   const [{ students: [...students] }] = parents
@@ -76,7 +77,18 @@ function Schedule() {
               >
                 <span className='sr-only'>Toggle schedule</span>
                 {toggleScheduleView && (
-                  toggleList ? <AiOutlineBars className='w-7 h-7' aria-hidden='true' /> : <AiOutlineCalendar className='w-7 h-7' aria-hidden='true' />
+                  toggleList ?
+                    <Tooltip title="List">
+                      <Box>
+                        <AiOutlineBars className='w-7 h-7' aria-hidden='true' />
+                      </Box>
+                    </Tooltip>
+                    :
+                    <Tooltip title="Calendar">
+                      <Box>
+                        <AiOutlineCalendar className='w-7 h-7' aria-hidden='true' />
+                      </Box>
+                    </Tooltip>
                 )}
               </button>
             </div>

@@ -75,7 +75,7 @@ function Calendar({ students, toggleList, sessionFilterLogic }) {
       {toggleList ? (
         <div>
           {/* Calendar View */}
-          <div className='md:pr-14'>
+          <div>
             <div className='flex items-center'>
               <h2 className='flex-auto font-semibold text-gray-900'>
                 {format(firstDayCurrentMonth, 'MMMM yyyy')}
@@ -157,11 +157,11 @@ function Calendar({ students, toggleList, sessionFilterLogic }) {
               ))}
             </div>
           </div>
-          <section className='mt-12 md:mt-0 md:pl-14'>
+          <section className='mt-12 md:mt-0'>
             <h2 className='font-semibold text-gray-900'>
               Schedule for <time dateTime={format(selectedDay, 'yyy-MM-dd')}>{format(selectedDay, 'MMM dd, yyyy')}</time>
             </h2>
-            <ol>
+            <ol className='mt-2'>
               {checkEmptyDay() ? (
                 students.map(student => (
                   filterSelectedDaySchedule(student).map(session => (
@@ -179,7 +179,7 @@ function Calendar({ students, toggleList, sessionFilterLogic }) {
           </section>
         </div>
       ) : (
-        <div className='md:pr-14'>
+        <div>
           {/* List View */}
           <div className='flex items-center'>
             <h2 className='flex-auto font-semibold text-gray-900'>
@@ -202,12 +202,15 @@ function Calendar({ students, toggleList, sessionFilterLogic }) {
               <AiOutlineRight className='w-5 h-5' aria-hidden='true' />
             </button>
           </div>
-          <section className='mt-4 md:pl-14'>
+          <section className='mt-4'>
             <ol>
               {checkEmptyMonth() ? (
                 students.map(student => (
-                  filterSelectedMonthSchedule(student).map(session => (
-                    <div key={session.sessionId} className='border border-gray-400 text-sm'>
+                  filterSelectedMonthSchedule(student).map((session, sessionIdx) => (
+                    <div
+                      key={session.sessionId}
+                      className='border-b border-gray-200 text-sm'
+                    >
                       <Session
                         student={student}
                         session={session}

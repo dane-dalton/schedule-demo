@@ -10,6 +10,7 @@ export const parents = [
         studentId: 33,
         name: "Thomas Wells",
         level: 2,
+        teacher: "Cole Comfort",
         schedule: [
           {
             sessionId: 1,
@@ -45,7 +46,7 @@ export const parents = [
             sessionType: "contest external",
             level: "CML-4",
             unit: "Meet 2",
-            locationType: "virtual"
+            locationType: "inPerson"
           },
           {
             sessionId: 9,
@@ -71,6 +72,7 @@ export const parents = [
         studentId: 56,
         name: "Meghan Wells",
         level: 4,
+        teacher: "Beth Allegretti",
         schedule: [
           {
             sessionId: 5,
@@ -106,7 +108,7 @@ export const parents = [
             sessionType: "contest external",
             level: "CML-5",
             unit: "Meet 2",
-            locationType: "virtual"
+            locationType: "inPerson"
           },
           {
             sessionId: 11,

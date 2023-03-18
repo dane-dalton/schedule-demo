@@ -65,7 +65,7 @@ function Schedule() {
               <button
                 type='button'
                 onClick={() => setToggleScheduleView(prev => !prev)}
-                className='-my-1.5 flex items-center p-1.5 text-gray-400 hover:text-gray-500'
+                className='-my-1.5 w-12 h-12 rounded-full hover:bg-gray-300 flex justify-center items-center p-1.5 text-gray-400 hover:text-gray-500'
               >
                 <span className='sr-only'>Toggle schedule</span>
                 {toggleScheduleView ? (<AiOutlineShrink className='w-7 h-7' aria-hidden='true' />) : (<AiOutlineExpand className='w-7 h-7' aria-hidden='true' />)}
@@ -73,7 +73,7 @@ function Schedule() {
               <button
                 type='button'
                 onClick={() => setToggleList(prev => !prev)}
-                className='-my-1.5 flex justify-start items-center p-1.5 text-gray-400 hover:text-gray-500'
+                className='-my-1.5 w-12 h-12 flex justify-center items-center p-1.5 text-gray-400 hover:text-gray-500 rounded-full hover:bg-gray-300'
               >
                 <span className='sr-only'>Toggle schedule</span>
                 {toggleScheduleView && (

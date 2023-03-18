@@ -1,5 +1,7 @@
 import React from 'react'
 
+import { classNames } from '../util'
+
 import {
   format,
   parseISO,
@@ -16,7 +18,12 @@ function StudentInfo({ student, session }) {
           {format(startDateTime, 'MMM dd')}
         </time>
       </p>
-      <p className='self-center'>{session.level}</p>
+      <p className={classNames(
+        session.sessionType == 'class'
+          ? 'border-2 border-emerald-700 bg-emerald-200 text-emerald-900 font-semibold'
+          : 'border-2 border-pink-700 bg-pink-200 text-pink-900 font-semibold',
+        'py-1 px-2.5 rounded-3xl self-center shadow-sm'
+      )}>{session.level}</p>
       <div>
         <p className='text-gray-900'>
           <time dateTime={session.startDateTime}>

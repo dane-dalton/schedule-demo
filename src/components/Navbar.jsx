@@ -5,10 +5,14 @@ import { logo, menu, close } from '../assets'
 
 import { classNames } from '../util'
 
-import { navLinks } from '../constants'
+import { navLinks, parents } from '../constants'
 
 function Navbar() {
   const [toggle, setToggle] = useState(false)
+
+  function messageNotificationLogic(nav) {
+    return ((nav.title == 'Profile') && (parents[0].messages.length > 0))
+  }
 
   return (
     <nav className='w-full flex flex-wrap py-6 justify-between items-center navbar'>
@@ -24,6 +28,11 @@ function Navbar() {
             )}
           >
             <a href={`${nav.id}`}>{nav.title}</a>
+            <div className={classNames(
+              messageNotificationLogic(nav) && 'bg-red-600 text-white font-semibold text-sm w-5 h-5 rounded-full absolute top-9 right-12 flex justify-center items-center'
+            )}>
+              <div>{messageNotificationLogic(nav) && parents[0].messages.length}</div>
+            </div>
           </li>
         ))}
       </ul>
@@ -35,10 +44,15 @@ function Navbar() {
           alt='menu'
           className='w-[28px] h-[28px] object-contain'
         />
+        <div className={classNames(
+              !toggle && parents[0].messages.length > 0 && 'bg-red-600 text-white font-semibold text-sm w-5 h-5 rounded-full absolute top-8 right-4 flex justify-center items-center'
+            )}>
+              <div>{!toggle && parents[0].messages.length > 0 && parents[0].messages.length}</div>
+            </div>
         <div
           className={classNames(
-            toggle ? 'flex' : 'hidden', 
-            'p-6 absolute bg-slate-400 top-20 right-0 mx-4 my-2 min-w-[140px] rounded-xl sidebar'
+            toggle ? 'flex' : 'hidden',
+            'p-6 absolute bg-slate-300 top-20 right-0 mx-4 my-2 min-w-[140px] rounded-xl '
           )}
         >
           <ul className='list-none flex flex-col justify-end items-center flex-1'>

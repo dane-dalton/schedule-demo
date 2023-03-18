@@ -12,7 +12,7 @@ function App() {
       </div>
       <div className={`${styles.paddingX} ${styles.flexCenter}`}>
         <div className={`${styles.boxWidth}`}>
-          {/* Students? Likely important updates. */}
+          {/* Updates/Notifications */}
         </div>
       </div>
       <div className={` ${styles.flexCenter}`}>

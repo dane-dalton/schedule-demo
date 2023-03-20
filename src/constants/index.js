@@ -273,3 +273,16 @@ export const sessionTypes = [
   "Contest External",
   "Tryout",
 ]
+
+export const importantNotifications = [
+  {
+    id: 1,
+    title: "Math Kangaroo Sign Ups",
+    content: "Sign up for this upcoming Math Kangaroo. Time slot will fill up, so sign up as soon as you can!"
+  },
+  {
+    id: 2,
+    title: "Summer Camp Sign Ups",
+    content: "We are opening up summer classes for the first time. Send your child on a fun math adventure, and watch their skills grow this summer!"
+  }
+]

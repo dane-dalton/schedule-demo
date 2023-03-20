@@ -18,19 +18,19 @@ function StudentListAndFilter({ student, handleSelectedStudents }) {
 
   return (
     <li className={classNames(
-      toggleCheckBox ? 'text-gray-900' : 'text-gray-400'
+      toggleCheckBox ? 'text-gray-900' : 'text-gray-400',
+      'hover:border-dashed hover:border-4 hover:border-gray-300 py-2 px-4 rounded-lg mb-2'
     )}>
       <button
-        className='flex-auto w-full flex flex-col justify-center mb-6'
+        className='flex-auto w-full flex flex-col justify-center'
         onClick={() => {
           handleCheckBoxToggle();
           handleSelectedStudents(toggleCheckBox, student);
-        }
-        }
+        }}
       >
-        <section className='flex justify-around items-center w-full mb-2'>
-          {
-            toggleCheckBox ?
+        <section className='flex justify-around items-center w-full'>
+          {toggleCheckBox
+              ?
               <Tooltip title="Hide Student">
                 <Box>
                   <AiOutlineCheckSquare className='h-6 w-6' />

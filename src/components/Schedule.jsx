@@ -49,7 +49,7 @@ function Schedule() {
 
   return (
     <div className='pt-16'>
-      <div className='max-w-md my-4 py-4 px-4 mx-auto sm:px-7 md:px-6 min-h-[384px] border border-gray-900 rounded-xl shadow-xl drop-shadow-xl'>
+      <div className='max-w-md my-4 py-4 px-4 mx-auto sm:px-7 md:px-6 min-h-[384px] border border-gray-900 rounded-xl shadow-xl'>
         <div>
           <ol className='mb-6'>
             {students.map(student => (
@@ -65,19 +65,20 @@ function Schedule() {
               <button
                 type='button'
                 onClick={() => setToggleScheduleView(prev => !prev)}
-                className='-my-1.5 w-12 h-12 rounded-full hover:bg-gray-300 flex justify-center items-center p-1.5 text-gray-400 hover:text-gray-500'
+                className='-my-1.5 w-12 h-12 rounded-full hover:bg-gray-200 flex justify-center items-center p-1.5 text-gray-400 hover:text-gray-500'
               >
                 <span className='sr-only'>Toggle schedule</span>
                 {toggleScheduleView ? (<AiOutlineShrink className='w-7 h-7' aria-hidden='true' />) : (<AiOutlineExpand className='w-7 h-7' aria-hidden='true' />)}
               </button>
-              <button
-                type='button'
-                onClick={() => setToggleList(prev => !prev)}
-                className='-my-1.5 w-12 h-12 flex justify-center items-center p-1.5 text-gray-400 hover:text-gray-500 rounded-full hover:bg-gray-300'
-              >
-                <span className='sr-only'>Toggle schedule</span>
-                {toggleScheduleView && (
-                  toggleList ?
+              {toggleScheduleView && (
+                <button
+                  type='button'
+                  onClick={() => setToggleList(prev => !prev)}
+                  className='-my-1.5 w-12 h-12 flex justify-center items-center p-1.5 text-gray-400 hover:text-gray-500 rounded-full hover:bg-gray-200'
+                >
+                  <span className='sr-only'>Toggle schedule</span>
+                  {toggleList
+                    ?
                     <Tooltip title="List">
                       <Box>
                         <AiOutlineBars className='w-7 h-7' aria-hidden='true' />
@@ -89,8 +90,10 @@ function Schedule() {
                         <AiOutlineCalendar className='w-7 h-7' aria-hidden='true' />
                       </Box>
                     </Tooltip>
-                )}
-              </button>
+                  }
+                </button>
+              )}
+
             </div>
             <div className='flex'>
               <DropdownSessionType handleSessionFilter={handleSessionFilter} />

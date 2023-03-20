@@ -22,7 +22,7 @@ function StudentInfo({ student, session }) {
         session.sessionType == 'class'
           ? 'border-2 border-emerald-700 bg-emerald-200 text-emerald-900 font-semibold'
           : 'border-2 border-pink-700 bg-pink-200 text-pink-900 font-semibold',
-        'py-1 px-2.5 rounded-3xl self-center shadow-sm'
+        'py-1 px-2.5 rounded-3xl self-center shadow-md'
       )}>{session.level}</p>
       <div>
         <p className='text-gray-900'>

@@ -23,13 +23,13 @@ function Navbar() {
           <li
             key={nav.id}
             className={classNames(
-              'font-normal text-[16px] cursor-pointer',
+              'font-normal text-[16px] cursor-pointer flex',
               i === navLinks.length - 1 ? 'mr-0' : 'mr-10'
             )}
           >
             <a href={`${nav.id}`}>{nav.title}</a>
             <div className={classNames(
-              messageNotificationLogic(nav) && 'bg-red-600 text-white font-semibold text-sm w-5 h-5 rounded-full absolute top-9 right-12 flex justify-center items-center'
+              messageNotificationLogic(nav) && 'bg-red-600 text-white font-semibold text-sm w-5 h-5 rounded-full relative -top-2 right-2 flex justify-center items-center'
             )}>
               <div>{messageNotificationLogic(nav) && parents[0].messages.length}</div>
             </div>
@@ -45,10 +45,10 @@ function Navbar() {
           className='w-[28px] h-[28px] object-contain'
         />
         <div className={classNames(
-              !toggle && parents[0].messages.length > 0 && 'bg-red-600 text-white font-semibold text-sm w-5 h-5 rounded-full absolute top-8 right-4 flex justify-center items-center'
-            )}>
-              <div>{!toggle && parents[0].messages.length > 0 && parents[0].messages.length}</div>
-            </div>
+          !toggle && parents[0].messages.length > 0 && 'bg-red-600 text-white font-semibold text-sm w-5 h-5 rounded-full relative -top-3 right-2 flex justify-center items-center'
+        )}>
+          <div>{!toggle && parents[0].messages.length > 0 && parents[0].messages.length}</div>
+        </div>
         <div
           className={classNames(
             toggle ? 'flex' : 'hidden',

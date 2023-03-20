@@ -13,14 +13,14 @@ function DropdownSessionType({ handleSessionFilter }) {
 
   return (
     <div 
-      className="inline-flex bg-white border rounded-md"
+      className="inline-flex bg-white border rounded-md shadow-md"
       onClick={() => { setToggleDropdown(prev => !prev) }}  
     >
-      <div
+      <button
         className="px-4 py-2 text-sm text-gray-600 hover:text-gray-700 hover:bg-gray-50 rounded-l-md"
       >
         {dropdownName}
-      </div>
+      </button>
       <div className='relative'>
         <button
           type="button"
